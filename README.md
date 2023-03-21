@@ -23,7 +23,11 @@ Among other non-production ready settings, it contains hard-coded secrets, store
 
 # Usage
 
-The various credentials are in file [env](./.env) and can be changed if you wish. They will be read automatically by `docker compose`.
+The various credentials are in file [.env.example](./.env.example) and can be changed if you wish. They will be read automatically by `docker compose`.
+
+Before first use `cp .env.example .env` and add your extra values to `.env`, this will not be committed.
+
+To add new secrets, they must be added as env vars in the .env file, mapped to Docker env vars in `docker-compose.yaml`, and added to `vault-setup.sh`.
 
 ## Common setup and teardown
 
@@ -80,7 +84,7 @@ The minio setup failed.
 ## Minio S3 setup
 
 * The `minio-setup` container creates a bucket named `concourse`.
-* Optional: point your browser to http://localhost:9000 and login.
+* Optional: point your browser to http://localhost:9001 and login.
 * Optional: follow [mc documentation] and install the command-line client `mc`.
 * If you want to create additional buckets, you can add to [scripts/minio-setup.sh](scripts/minio-setup.sh).
 

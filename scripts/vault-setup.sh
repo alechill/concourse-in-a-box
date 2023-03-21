@@ -37,3 +37,11 @@ vault kv put /concourse/main/s3-endpoint   value="$MINIO_ADDR"
 vault kv put /concourse/main/s3-region     value="$MINIO_REGION_NAME"
 vault kv put /concourse/main/s3-access-key value="$MINIO_ACCESS_KEY"
 vault kv put /concourse/main/s3-secret-key value="$MINIO_SECRET_KEY"
+
+# custom secrets...
+
+vault kv put /concourse/main/github private_key="$(cat $CI_GITHUB_PRIVATE_KEY)" private_key_passphrase="$LOCAL_GITHUB_PRIVATE_KEY_PASSPHRASE"
+vault kv put /concourse/main/sonarqube token="$CI_SONARQUBE_TOKEN"
+vault kv put /concourse/main/nexus npm_token="$CI_NEXUS_NPM_TOKEN"
+vault kv put /concourse/main/harbor username="$CI_HARBOR_USERNAME"
+vault kv put /concourse/main/harbor token="$CI_HARBOR_TOKEN"
